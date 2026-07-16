@@ -1,6 +1,6 @@
-# 🕵️‍♂️ Mật Danh Bơ Bía (Anh Bơ Bía Game 3D)
+# 🕵️‍♂️ Mật Danh Bò Bía (Anh Bò Bía Game 3D)
 
-**Mật Danh Bơ Bía** là một dự án game nhập vai trinh thám 3D độc đáo được phát triển trên nền tảng **Unity Editor 6000.4.6f1**. Game lấy bối cảnh một khu phố lao động đặc trưng của Việt Nam, nơi người chơi sẽ hóa thân thành anh bán bơ bía lề đường để thực hiện các nhiệm vụ điều tra, thu thập manh mối ngầm và phá giải các vụ án phức tạp.
+**Mật Danh Bò Bía** là một dự án game nhập vai trinh thám 3D độc đáo được phát triển trên nền tảng **Unity Editor 6000.4.6f1**. Game lấy bối cảnh một khu phố lao động đặc trưng của Việt Nam, nơi người chơi sẽ hóa thân thành anh bán Bò bía lề đường để thực hiện các nhiệm vụ điều tra, thu thập manh mối ngầm và phá giải các vụ án phức tạp.
 
 ---
 
@@ -8,8 +8,8 @@
 
 ### 📅 Hệ Thống Cốt Truyện và Nhiệm Vụ Theo Tuyến Thời Gian
 Dự án được thiết kế xoay quanh các giai đoạn cốt truyện chi tiết (Phase 1 & Phase 2), dẫn dắt người chơi qua chuỗi hoạt động ngày đêm chân thực:
-*   **Giai Đoạn 1 (Phase 1 - Anh Bơ Bía):** Bắt đầu hành trình điều tra đối tượng tình nghi (Huy Sẹo). Người chơi sẽ chứng kiến hoạt cảnh đối tượng bỏ chạy, làm rơi hột quẹt, phi tang vật chứng vào bãi rác và tiến hành nhiệm vụ tìm kiếm manh mối ngầm.
-*   **Giai Đoạn 2 (Phase 2 - Mật Phục):** Đóng vai người bán bơ bía vào buổi sáng để tiếp cận các khách hàng quen thuộc trong khu phố (Bà Nga, anh Shipper, Mê Liu), thu thập lời thoại tình nghi trước khi tiến hành mật phục, theo dõi căn biệt thự khả nghi vào ban đêm.
+*   **Giai Đoạn 1 (Phase 1 - Anh Bò Bía):** Bắt đầu hành trình điều tra đối tượng tình nghi (Huy Sẹo). Người chơi sẽ chứng kiến hoạt cảnh đối tượng bỏ chạy, làm rơi hột quẹt, phi tang vật chứng vào bãi rác và tiến hành nhiệm vụ tìm kiếm manh mối ngầm.
+*   **Giai Đoạn 2 (Phase 2 - Mật Phục):** Đóng vai người bán Bò bía vào buổi sáng để tiếp cận các khách hàng quen thuộc trong khu phố (Bà Nga, anh Shipper, Mê Liu), thu thập lời thoại tình nghi trước khi tiến hành mật phục, theo dõi căn biệt thự khả nghi vào ban đêm.
 
 ### 🎭 Điện Ảnh Hóa và Cắt Cảnh (Cutscenes & Cinematic)
 *   Sử dụng camera điện ảnh để chuyển đổi góc nhìn mượt mà giữa góc nhìn thứ ba điều khiển nhân vật và góc nhìn tự động của hoạt cảnh.
@@ -17,7 +17,7 @@ Dự án được thiết kế xoay quanh các giai đoạn cốt truyện chi t
 
 ### 🔍 Cơ Chế Trinh Thám & Quản Lý Manh Mối
 *   **Evidence HUD / Clue Notification:** Thông báo thời gian thực và quản lý các manh mối đã thu thập được để phục vụ mục đích phá án.
-*   **Bán hàng tương tác:** Mini-game làm và bán bơ bía đóng vai trò là vỏ bọc hoàn hảo để tiếp cận nhân chứng và thu thập tin tình báo.
+*   **Bán hàng tương tác:** Mini-game làm và bán Bò bía đóng vai trò là vỏ bọc hoàn hảo để tiếp cận nhân chứng và thu thập tin tình báo.
 
 ---
 
@@ -42,7 +42,8 @@ Dưới đây là sơ đồ cấu trúc của phần mã nguồn điều khiển
 
 ## 👥 Đóng Góp Dự Án (Contributors)
 
-Dự án được xây dựng và đóng góp bởi đội ngũ lập trình viên đầy nhiệt huyết. Lịch sử commit chi tiết ghi nhận đầy đủ vai trò của từng thành viên trong việc phát triển hệ thống gameplay, thiết kế kịch bản và tối ưu hóa hệ thống.
+Dự án được xây dựng và đóng góp Bòi đội ngũ lập trình viên 3 thành viên:
+- 
 
 > [!NOTE]
 > Để bảo vệ quyền sở hữu trí tuệ về mặt mỹ thuật và thiết kế màn chơi độc quyền, kho lưu trữ public này **chỉ chia sẻ phần mã nguồn lập trình cốt lõi và tài liệu hướng dẫn**. Các tài nguyên hình ảnh 3D, mô hình nhân vật (Models), các Prefab đã được cấu dựng sẵn, hiệu ứng Shader và âm thanh gốc (Soundtrack) đã được lược bỏ khỏi nhánh này.

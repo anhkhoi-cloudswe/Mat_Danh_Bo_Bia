@@ -42,8 +42,14 @@ Dưới đây là sơ đồ cấu trúc của phần mã nguồn điều khiển
 
 ## 👥 Đóng Góp Dự Án (Contributors)
 
-Dự án được xây dựng và đóng góp Bòi đội ngũ lập trình viên 3 thành viên:
-- 
+* **Anh Khôi (`anhkhoi-cloudswe`) — Project Manager & Main Lead**
+    * **Quản lý & Thiết kế:** Điều phối tiến độ, biên kịch kịch bản cốt truyện, dàn dựng các phân cảnh Virtual Camera/Timeline (Cutscenes).
+    * **Lập trình:** Phát triển và tối ưu giao diện điều khiển chính (Main Menu).
+    * **Mỹ thuật & Môi trường:** Trực tiếp đóng góp phát triển mô hình nhân vật 3D, tinh chỉnh kỹ thuật và bố trí không gian bản đồ (Level Design).
+* **Gia Bảo (`hackerviet-dev`) — Lead Gameplay Programmer**
+    * **Lập trình:** Xây dựng logic vận hành, xử lý cơ chế tương tác và hệ thống điều khiển chính của trò chơi (Main Gameplay).
+* **Đăng Khoa (`BachKhoaHL`) — Environment & 3D Artist**
+    * **Mỹ thuật:** Khởi tạo kiến trúc khu nhà bản đồ, sắp đặt asset bối cảnh và hoàn thiện môi trường xung quanh (Background).
 
 > [!NOTE]
 > Để bảo vệ quyền sở hữu trí tuệ về mặt mỹ thuật và thiết kế màn chơi độc quyền, kho lưu trữ public này **chỉ chia sẻ phần mã nguồn lập trình cốt lõi và tài liệu hướng dẫn**. Các tài nguyên hình ảnh 3D, mô hình nhân vật (Models), các Prefab đã được cấu dựng sẵn, hiệu ứng Shader và âm thanh gốc (Soundtrack) đã được lược bỏ khỏi nhánh này.

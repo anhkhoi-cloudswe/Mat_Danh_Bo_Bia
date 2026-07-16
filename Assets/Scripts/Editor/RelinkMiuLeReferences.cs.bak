@@ -1,0 +1,88 @@
+using UnityEditor;
+using UnityEngine;
+using System.Collections.Generic;
+
+public static class RelinkMiuLeReferences
+{
+    [MenuItem("Tools/Relink Miu Le")]
+    public static void Relink()
+    {
+        GameObject newMiuLePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Miu Le.prefab");
+        if (newMiuLePrefab == null)
+        {
+            Debug.LogError("New Miu Le prefab not found at Assets/Prefabs/Miu Le.prefab!");
+            return;
+        }
+
+        int fixedCount = 0;
+        List<string> report = new List<string>();
+
+        // 1. Fix StoryPhase2Manager
+        var phase2 = Object.FindFirstObjectByType<StoryPhase2Manager>();
+        if (phase2 != null)
+        {
+            var type = phase2.GetType();
+            var field = type.GetField("meLiuPrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (field != null)
+            {
+                field.SetValue(phase2, newMiuLePrefab);
+                EditorUtility.SetDirty(phase2);
+                report.Add("Fixed meLiuPrefab on StoryPhase2Manager.");
+                fixedCount++;
+            }
+        }
+
+        // 2. Fix VillaInvestigation
+        var villa = Object.FindFirstObjectByType<VillaInvestigation>();
+        if (villa != null)
+        {
+            var type = villa.GetType();
+            var field = type.GetField("miuLePrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (field != null)
+            {
+                field.SetValue(villa, newMiuLePrefab);
+                EditorUtility.SetDirty(villa);
+                report.Add("Fixed miuLePrefab on VillaInvestigation.");
+                fixedCount++;
+            }
+        }
+
+        // 3. Fix CustomerManager customerPrefabs list
+        var customerMgr = Object.FindFirstObjectByType<CustomerManager>();
+        if (customerMgr != null)
+        {
+            var type = customerMgr.GetType();
+            var field = type.GetField("customerPrefabs", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (field != null)
+            {
+                var array = field.GetValue(customerMgr) as GameObject[];
+                if (array != null)
+                {
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        var val = array[i];
+                        if (val == null || val.name == "Miu Le" || val.name.Contains("Miu"))
+                        {
+                            array[i] = newMiuLePrefab;
+                            report.Add($"Fixed customerPrefabs[{i}] on CustomerManager.");
+                            fixedCount++;
+                        }
+                    }
+                    field.SetValue(customerMgr, array);
+                    EditorUtility.SetDirty(customerMgr);
+                }
+            }
+        }
+
+        if (fixedCount > 0)
+        {
+            UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
+            UnityEditor.SceneManagement.EditorSceneManager.SaveOpenScenes();
+            Debug.Log("RE-LINK SUCCESS:\n" + string.Join("\n", report));
+        }
+        else
+        {
+            Debug.Log("No Miu Le references needed fixing.");
+        }
+    }
+}

@@ -1,0 +1,65 @@
+# Unity generated folders
+Library/
+Logs/
+Temp/
+UserSettings/
+Assets/_Recovery/
+
+# IDE and OS files
+.vs/
+.idea/
+*.csproj.user
+*.csproj
+*.sln
+*.slnx
+*.lscache
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.tmp
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Build outputs
+Build/
+Builds/
+*.apk
+*.aab
+*.unitypackage
+
+# Local inspection/debug outputs
+animator_inspection.txt
+hierarchy_scan.json
+player_inspection_results.json
+scene_inspection.txt
+/*.txt
+/*.log
+
+# Local AI/MCP configuration and generated data
+.agents/
+.claude/
+.codex/
+.gemini/
+.mcp.json
+.tmp/
+UnityMcpImport.log
+Packages/com.coplaydev.unity-mcp/
+Assets/Screenshots/
+
+# Local secrets and signing credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.keystore
+*.jks
+credentials*.json
+secrets*.json

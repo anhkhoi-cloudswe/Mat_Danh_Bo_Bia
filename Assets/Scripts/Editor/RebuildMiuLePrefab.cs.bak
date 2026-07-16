@@ -1,0 +1,108 @@
+using UnityEngine;
+using UnityEditor;
+
+public static class RebuildMiuLePrefab
+{
+    [MenuItem("Tools/Rebuild Miu Le Prefab")]
+    public static void Rebuild()
+    {
+        Debug.Log("=== Rebuilding Miu Le Prefab from Scratch ===");
+
+        const string walkFbxPath = "Assets/Models/Nhan_Vat_Phu/Miu Le/MeLiu@Walking.fbx";
+        const string idleFbxPath = "Assets/Models/Nhan_Vat_Phu/Miu Le/MeLiu@Idle.fbx";
+        const string controllerPath = "Assets/Animators/MiuLe_Animator.controller";
+        const string prefabPath = "Assets/Prefabs/Miu Le.prefab";
+
+        // 1. Configure the Walk FBX as Humanoid (avatarSetup: Create From This Model)
+        ModelImporter walkImporter = AssetImporter.GetAtPath(walkFbxPath) as ModelImporter;
+        if (walkImporter != null)
+        {
+            walkImporter.animationType = ModelImporterAnimationType.Human;
+            walkImporter.avatarSetup = ModelImporterAvatarSetup.CreateFromThisModel;
+            walkImporter.SaveAndReimport();
+        }
+
+        // 2. Configure the Idle FBX as Humanoid
+        ModelImporter idleImporter = AssetImporter.GetAtPath(idleFbxPath) as ModelImporter;
+        if (idleImporter != null)
+        {
+            idleImporter.animationType = ModelImporterAnimationType.Human;
+            idleImporter.avatarSetup = ModelImporterAvatarSetup.CreateFromThisModel;
+            idleImporter.SaveAndReimport();
+        }
+
+        // 3. Load Walk FBX as GameObject to use as prefab base
+        GameObject baseModel = AssetDatabase.LoadAssetAtPath<GameObject>(walkFbxPath);
+        if (baseModel == null)
+        {
+            Debug.LogError($"Could not load base model FBX from: {walkFbxPath}");
+            return;
+        }
+
+        // Instantiating a clean instance from the FBX
+        GameObject instance = PrefabUtility.InstantiatePrefab(baseModel) as GameObject;
+        if (instance == null)
+        {
+            Debug.LogError("Failed to instantiate prefab instance.");
+            return;
+        }
+
+        instance.name = "Miu Le";
+
+        // Scale setup (matching the old scale of 0.6)
+        instance.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+
+        // Load Avatar
+        Avatar charAvatar = null;
+        foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(walkFbxPath))
+        {
+            if (asset is Avatar) { charAvatar = asset as Avatar; break; }
+        }
+
+        // Load Controller
+        RuntimeAnimatorController controller = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(controllerPath);
+
+        // Setup Animator
+        Animator anim = instance.GetComponent<Animator>();
+        if (anim == null) anim = instance.AddComponent<Animator>();
+        anim.runtimeAnimatorController = controller;
+        anim.avatar = charAvatar;
+        anim.applyRootMotion = false;
+
+        // Add NpcRootMotionMuter
+        instance.AddComponent<NpcRootMotionMuter>();
+
+        // Save as prefab
+        PrefabUtility.SaveAsPrefabAsset(instance, prefabPath);
+        Debug.Log($"Clean Prefab saved to {prefabPath}");
+
+        // Destroy temporary scene instance
+        Object.DestroyImmediate(instance);
+
+        // Update all existing instances in scene to use the new avatar and controller
+        foreach (var go in Object.FindObjectsOfType<GameObject>())
+        {
+            if (go.name == "Miu Le" || go.name.Contains("Miu Le") || go.name.Contains("MeLiu"))
+            {
+                Animator sceneAnim = go.GetComponent<Animator>();
+                if (sceneAnim == null) sceneAnim = go.AddComponent<Animator>();
+
+                sceneAnim.runtimeAnimatorController = controller;
+                sceneAnim.avatar = charAvatar;
+                sceneAnim.applyRootMotion = false;
+
+                if (go.GetComponent<NpcRootMotionMuter>() == null)
+                {
+                    go.AddComponent<NpcRootMotionMuter>();
+                }
+
+                EditorUtility.SetDirty(go);
+                UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(go.scene);
+                Debug.Log($"Updated scene instance: {go.name}");
+            }
+        }
+
+        AssetDatabase.Refresh();
+        Debug.Log("=== Rebuild Miu Le Prefab COMPLETE ===");
+    }
+}

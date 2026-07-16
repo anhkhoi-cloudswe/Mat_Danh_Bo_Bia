@@ -1,7 +1,9 @@
+
 # 🕵️‍♂️ Mật Danh Bò Bía (Game 3D)
 
 **Mật Danh Bò Bía** là một dự án game nhập vai trinh thám 3D độc đáo được phát triển trên nền tảng **Unity Editor 6000.4.6f1**. Game lấy bối cảnh một khu phố lao động đặc trưng của Việt Nam, nơi người chơi sẽ hóa thân thành anh bán Bò bía lề đường để thực hiện các nhiệm vụ điều tra, thu thập manh mối ngầm và phá giải các vụ án phức tạp.
 
+<img width="1919" height="1040" alt="Main_Menu_Mat_Danh_BoBia" src="https://github.com/user-attachments/assets/0e21b176-dcc0-490d-b02d-ee288d1baccb" />
 ---
 
 ## 🌟 Tính Năng Nổi Bật

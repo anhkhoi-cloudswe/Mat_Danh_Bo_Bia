@@ -50,7 +50,7 @@ Dưới đây là sơ đồ cấu trúc của phần mã nguồn điều khiển
     * **Mỹ thuật & Môi trường:** Trực tiếp đóng góp phát triển mô hình nhân vật 3D, tinh chỉnh kỹ thuật và bố trí không gian bản đồ (Level Design).
 * **Gia Bảo (`hackerviet-dev`) — Lead Gameplay Programmer**
     * **Lập trình:** Xây dựng logic vận hành, xử lý cơ chế tương tác và hệ thống điều khiển chính của trò chơi (Main Gameplay).
-* **Đăng Khoa (`BachKhoaHL`) — Environment & 3D Artist**
+* **Bách Khoa (`BachKhoaHL`) — Environment & 3D Artist**
     * **Mỹ thuật:** Khởi tạo kiến trúc khu nhà bản đồ, sắp đặt asset bối cảnh và hoàn thiện môi trường xung quanh (Background).
 
 > [!NOTE]
